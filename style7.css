@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0f172a;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.center {
+  text-align: center;
+}
+
+.glow-button {
+  padding: 16px 40px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background: transparent;
+  border: none;
+  position: relative;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.glow-button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    #00f0ff,
+    #00ff88,
+    #f0f,
+    #ff8c00,
+    #00f0ff
+  );
+  animation: rotate 4s linear infinite;
+  z-index: -2;
+}
+
+.glow-button::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background-color: #0f172a;
+  border-radius: 6px;
+  z-index: -1;
+}
+
+.glow-button:hover {
+  box-shadow: 0 0 20px #00ffe1, 0 0 30px #ff00f2, 0 0 40px #00ffe1;
+  transform: scale(1.05);
+  transition: 0.3s ease;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0turn);
+  }
+  100% {
+    transform: rotate(1turn);
+  }
+}
+.glow-button.clicked {
+  box-shadow: 0 0 30px 10px rgba(0, 255, 200, 0.6);
+}
